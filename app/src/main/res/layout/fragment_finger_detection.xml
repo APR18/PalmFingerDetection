@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Camera preview -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Finger overlay -->
+    <com.example.palmfingerdetection.overlay.FingerOverlayView
+        android:id="@+id/fingerOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ─── Top Info Bar ─── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        android:padding="12dp"
+        android:background="#99000000">
+
+        <!-- Scan progress -->
+        <TextView
+            android:id="@+id/scanProgressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scanning: 0/5"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Current finger name -->
+        <TextView
+            android:id="@+id/currentFingerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="👆 Next: Thumb"
+            android:textSize="18sp"
+            android:textColor="#FFC107"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Detection status -->
+        <TextView
+            android:id="@+id/detectionStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Waiting for finger..."
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="4dp" />
+
+        <!-- Palm/Dorsal check -->
+        <TextView
+            android:id="@+id/sideCheckText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Side: --"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <!-- ─── Scanned Fingers Tracker (shows which are done) ─── -->
+    <LinearLayout
+        android:id="@+id/fingerTrackerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="160dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/thumbStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="👍\nThumb\n⬜"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/indexStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="☝️\nIndex\n⬜"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/middleStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🖕\nMiddle\n⬜"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/ringStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💍\nRing\n⬜"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+        <TextView
+            android:id="@+id/littleStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🤙\nLittle\n⬜"
+            android:textSize="12sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp" />
+
+    </LinearLayout>
+
+    <!-- ─── Bottom Error/Status Bar ─── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:paddingBottom="120dp">
+
+        <!-- Error message -->
+        <TextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:background="#CC000000"
+            android:padding="12dp"
+            android:visibility="gone" />
+
+        <!-- Match result toast-like display -->
+        <TextView
+            android:id="@+id/matchResultText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="16sp"
+            android:textColor="#4CAF50"
+            android:textStyle="bold"
+            android:background="#CC000000"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
+        <!-- Instruction -->
+        <TextView
+            android:id="@+id/instructionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place your finger in the oval and press capture"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:background="#66000000"
+            android:padding="8dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <!-- Capture button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/captureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:contentDescription="Capture Finger" />
+
+</FrameLayout>

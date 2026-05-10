@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.palm.PalmDetectionFragment">
+
+    <!-- Camera preview (fills the whole screen) -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Palm overlay (drawn on top of camera) -->
+    <com.example.palmfingerdetection.overlay.PalmOverlayView
+        android:id="@+id/palmOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Capture button at the bottom -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/captureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="48dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:contentDescription="Capture Palm" />
+
+    <!-- Light condition indicator -->
+    <TextView
+        android:id="@+id/lightIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:background="#66000000"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:text="Light: Normal" />
+
+    <!-- Hand info text -->
+    <TextView
+        android:id="@+id/handInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="#66000000"
+        android:padding="8dp"
+        android:textColor="@android:color/white"
+        android:text="Detecting hand..." />
+
+</FrameLayout>
